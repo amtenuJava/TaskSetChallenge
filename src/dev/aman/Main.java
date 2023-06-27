@@ -32,6 +32,11 @@ public class Main {
         sortAndPrint("Unassigned tasks",missingTasks);
 
 
+        Set<Task> getOverLap=getUnion(List.of(getIntersect(annTasks,carolTasks),
+                getIntersect(carolTasks,bobTasks),getIntersect(annTasks,bobTasks)));
+
+       sortAndPrint("Assigned to multiple",getOverLap,sortByPriority);
+
     }
 
     private static void sortAndPrint(String header, Collection<Task> collection
