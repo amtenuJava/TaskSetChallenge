@@ -15,6 +15,15 @@ public class Main {
         Set<Task> annTasks2=TaskData.getTasks("ann");
         sortAndPrint("Ann's tasks",annTasks,sortByPriority);
 
+        Set<Task> bobTasks=TaskData.getTasks("bob");
+        Set<Task> carolTasks=TaskData.getTasks("carol");
+
+        List<Set<Task>> listOfAssignedTasks=List.of(annTasks,bobTasks,carolTasks);
+
+        Set<Task> setOfAllAssginedTasks=getUnion(listOfAssignedTasks);
+
+        sortAndPrint("All tasks assigned ",setOfAllAssginedTasks);
+
     }
 
     private static void sortAndPrint(String header, Collection<Task> collection
@@ -38,5 +47,28 @@ public class Main {
         list.forEach(System.out::println);
 
     }
+
+
+    private static Set<Task> getUnion(List<Set<Task>> sets){ //Distinct collection of all tasks
+        Set<Task> union=new HashSet<>();//we don't want to mutate the existing data
+        for (var taskSet:sets
+             ) {
+            union.addAll(taskSet);
+        }
+        return union;
+    }
+
+    private static Set<Task> getIntersect(Set<Task> a,Set<Task> b){
+        Set<Task> intersect=new HashSet<>(a);
+        intersect.retainAll(b);
+        return intersect;
+    }
+
+    private static Set<Task> getDiff(Set<Task> a,Set<Task> b){
+        Set<Task> diff=new HashSet<>(a);
+        diff.removeAll(b);
+        return diff;
+    }
+
 
 }
