@@ -28,7 +28,8 @@ public class Main {
         Set<Task> everyTask=getUnion(List.of(tasks,setOfAllAssginedTasks));//All tasks assigned and non-assigned
         sortAndPrint("All tasks assigned and non assigned",everyTask);
 
-
+        Set<Task> missingTasks=getDiff(everyTask,setOfAllAssginedTasks);//Unassigned tasks
+        sortAndPrint("Unassigned tasks",missingTasks);
 
 
     }
