@@ -24,6 +24,13 @@ public class Main {
 
         sortAndPrint("All tasks assigned ",setOfAllAssginedTasks);
 
+
+        Set<Task> everyTask=getUnion(List.of(tasks,setOfAllAssginedTasks));//All tasks assigned and non-assigned
+        sortAndPrint("All tasks assigned and non assigned",everyTask);
+
+
+
+
     }
 
     private static void sortAndPrint(String header, Collection<Task> collection
